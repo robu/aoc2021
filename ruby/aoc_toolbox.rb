@@ -6,9 +6,10 @@ class InputFile
 
     private
     # returns an array of raw file content, each line as one string. 
-    def raw_lines
+    def raw_lines(strip_newline=true)
         if @raw_lines == []
             @raw_lines = File.open(@filename).readlines()
+            @raw_lines.map{|line| line.strip} if strip_newline
         end
         @raw_lines
     end
@@ -16,7 +17,7 @@ class InputFile
     public
     # returns an array of lines as strings. each line is stripped from ending newline char.
     def lines
-        self.raw_lines.map{|line| line.strip}
+        self.raw_lines
     end
 
     # returns an array of lines as integers
