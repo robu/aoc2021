@@ -1,6 +1,6 @@
 const fs = require('fs')
 
-class InputFile {
+class InputData {
     constructor(filename = "input.txt") {
         this._lines = fs.readFileSync(filename).toString().trim().split("\n")
     }
@@ -15,7 +15,7 @@ class InputFile {
 
     /**
      * 
-     * @returns same as InputFile.lines() but each line converted to integer
+     * @returns same as InputData.lines() but each line converted to integer
      */
     linesInts() {
         return this.lines().map((x) => parseInt(x))
@@ -35,7 +35,7 @@ class InputFile {
     }
 
     /**
-     * A section in the inputfile is defined as a number of consecutive lines without any ampty lines
+     * A section in the input data is defined as a number of consecutive lines without any ampty lines
      * between them. One or more consecutive empty lines separates each section (but is not considered to
      * be part of any section).
      * @returns an array with each section, where each section is an array of all the lines in the section
@@ -90,4 +90,4 @@ class InputFile {
     }
 }
 
-module.exports = {InputFile}
+module.exports = {InputData}
