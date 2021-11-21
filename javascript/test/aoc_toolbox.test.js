@@ -1,4 +1,4 @@
-const InputFile = require('../aoc_toolbox')
+const {InputFile} = require('../aoc_toolbox')
 
 test('lines()', ()=>{
     const i = new InputFile()
