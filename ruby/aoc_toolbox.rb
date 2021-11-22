@@ -1,4 +1,4 @@
-class InputFile
+class InputData
     def initialize(filename: 'input.txt', lines: nil, strip_newline: true)
         if (lines)
             @raw_lines = lines.dup
@@ -27,21 +27,21 @@ class InputFile
     end
 
     # returns an array of sections, as identified by the existance of 
-    # empty lines in the input data. Each section is a InputFile instance containing 
+    # empty lines in the input data. Each section is a InputData instance containing 
     # the lines for each section.
     def sections
         sections = []
         current_section = []
         self.lines.each do |line|
             if line == ''
-                sections.append(InputFile.new(lines: current_section)) unless current_section.empty?
+                sections.append(InputData.new(lines: current_section)) unless current_section.empty?
                 current_section = []
             else
                 current_section.append(line)
             end
         end
         # deal with last line if non-empty
-        sections.append(InputFile.new(lines: current_section)) unless current_section.empty?
+        sections.append(InputData.new(lines: current_section)) unless current_section.empty?
         sections
     end
 
@@ -49,13 +49,13 @@ class InputFile
         self.lines[row][col]
     end
 
-    # returns a InputFile instance representing the sub matrix pointed to by the parameters
+    # returns a InputData instance representing the sub matrix pointed to by the parameters
     def sub_matrix(start_row, start_col, rows, cols)
         sub = []
         for row in self.lines[start_row...(start_row+rows)]
             sub_row = row[start_col...(start_col+cols)]
             sub.append(sub_row)
         end
-        InputFile.new(lines: sub)
+        InputData.new(lines: sub)
     end
 end
