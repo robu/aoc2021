@@ -33,7 +33,7 @@ test('matrixChar()', () => {
     expect(i.matrixChar(3, 15)).toBe('#')
 })
 
-test('matrichChar() with supplied lines', () => {
+test('matrixChar() with supplied lines', () => {
     const lines = ['0123456789', 'ABCDEFGHIK', 'abcdefghijk']
     const i = new InputData({ lines })
     expect(i.matrixChar(1, 3)).toBe('D')
