@@ -82,7 +82,7 @@ class InputData {
      * @param {number} startCol 
      * @param {number} rows 
      * @param {number} cols 
-     * @returns 
+     * @returns the sub matrix, as a new InputData instance
      */
     subMatrix(startRow, startCol, rows, cols) {
         let sub = []
