@@ -91,7 +91,7 @@ class InputData {
             let subRow = ls[rowNum].substr(startCol, cols)
             sub.push(subRow)
         }
-        return sub
+        return new InputData({lines: sub})
     }
 }
 

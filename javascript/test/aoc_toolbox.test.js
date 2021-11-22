@@ -41,6 +41,6 @@ test('matrixChar() with supplied lines', () => {
 
 test('subMatrix()', () => {
     const i = new InputData({ filename: 'input-matrix.txt' })
-    expect(i.subMatrix(1, 1, 2, 2)[0]).toBe('.#')
-    expect(i.subMatrix(1, 1, 2, 2)[1]).toBe('..')
+    expect(i.subMatrix(1, 1, 2, 2).lines()[0]).toBe('.#')
+    expect(i.subMatrix(1, 1, 2, 2).lines()[1]).toBe('..')
 })
