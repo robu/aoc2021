@@ -1,8 +1,13 @@
 const fs = require('fs')
 
 class InputData {
-    constructor(filename = "input.txt") {
-        this._lines = fs.readFileSync(filename).toString().trim().split("\n")
+    constructor(params={}) {
+        if (params.lines) {
+            this._lines = params.lines
+        } else {
+            let filename = params.filename || "input.txt"
+            this._lines = fs.readFileSync(filename).toString().trim().split("\n")
+        }
     }
 
     /**
