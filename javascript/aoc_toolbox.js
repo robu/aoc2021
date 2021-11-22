@@ -43,7 +43,7 @@ class InputData {
      * A section in the input data is defined as a number of consecutive lines without any ampty lines
      * between them. One or more consecutive empty lines separates each section (but is not considered to
      * be part of any section).
-     * @returns an array with each section, where each section is an array of all the lines in the section
+     * @returns an array with each section, represented as a new InputData instance
      */
     sections() {
         let sections = []
@@ -52,7 +52,7 @@ class InputData {
         for (let lineNum in ls) {
             if (ls[lineNum] == '') {
                 if (currentSection.length > 0) {
-                    sections.push(currentSection)
+                    sections.push(new InputData({lines: currentSection}))
                 }
                 currentSection = []
             } else {
@@ -60,7 +60,7 @@ class InputData {
             }
         }
         if (currentSection.length > 0) {
-            sections.push(currentSection)
+            sections.push(new InputData({lines: currentSection}))
         }
         return sections
     }

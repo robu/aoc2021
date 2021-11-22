@@ -24,7 +24,7 @@ test('linefieldsRegexp()', () => {
 
 test('sections()', () => {
     const i = new InputData({ filename: 'input-sections.txt' })
-    expect(i.sections()[3][1]).toBe('banana')
+    expect(i.sections()[3].lines()[1]).toBe('banana')
 })
 
 test('matrixChar()', () => {
