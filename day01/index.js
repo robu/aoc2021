@@ -1,4 +1,3 @@
-const { isPrimitive } = require('util')
 const {InputData} = require('./aoc_toolbox')
 
 const isPrime = num => {
