@@ -1,3 +1,0 @@
-a := 23 + 34
-splunge := 'hello'
-boing := 42

@@ -1,3 +1,0 @@
-adam,12,23,34
-beta,4a,5e,33
-cesar,p,p,p,a
