@@ -40,18 +40,22 @@ class InputData
 
     # returns an array with an element for each line, each being an array with all the fields
     # sep separator character (or Regexp) between fields. Default: ','
-    def linefields_separator(sep: ',')
+    def linefields_separator(sep=',')
         self.lines.map{|line| line.split(sep) }
     end
 
     # returns an array of sections, as identified by the existance of 
     # empty lines in the input data. Each section is a InputData instance containing 
     # the lines for each section.
-    def sections
+    # separator_line either a string that match the line completely, or a regexp identifying a separator line. default = empty string, ie empty line
+    def sections(separator_line='')
         sections = []
         current_section = []
+        if separator_line == ''
+            separator_line = /^$/ # convert to regexp empty line 
+        end
         self.lines.each do |line|
-            if line == ''
+            if separator_line.is_a?(String) && line == separator_line || separator_line.is_a?(Regexp) && line.match(separator_line)
                 sections.append(InputData.new(lines: current_section)) unless current_section.empty?
                 current_section = []
             else
