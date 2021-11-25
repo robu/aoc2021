@@ -1,4 +1,4 @@
-const { InputData } = require('./aoc_toolbox')
+const { InputData } = require('aoc-toolbox')
 
 const isPrime = num => {
     for (let i = 2, s = Math.sqrt(num); i <= s; i++)
