@@ -20,10 +20,28 @@ class InputData
         self.lines.map(&:to_i)
     end
 
+    # Returns a subset (as an InputData instance) of the data lines, 
+    # starting with the line with the provided index.
+    # start_line index of first line extracted
+    # num_lines number of lines extracted. default=-1, meaning to the last line
+    def lines_data(start_line, num_lines = -1)
+        lines2 = []
+        num_lines = self.lines.length if num_lines < 0
+        lines2.push(self.lines[start_line...(start_line+num_lines)])
+        InputData.new(lines2)
+    end
+
     # returns an array of lines, each containing an array of 
     # fields identified by the provided regexp
     def linefields_regexp(rx)
         self.lines.map{|line| line.match(rx).to_a.drop(1)}
+    end
+
+
+    # returns an array with an element for each line, each being an array with all the fields
+    # sep separator character (or Regexp) between fields. Default: ','
+    def linefields_separator(sep: ',')
+        self.lines.map{|line| line.split(sep) }
     end
 
     # returns an array of sections, as identified by the existance of 
