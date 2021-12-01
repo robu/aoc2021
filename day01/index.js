@@ -1,4 +1,4 @@
-const { InputData, slidingWindow, countCompare } = require('aoc-toolbox')
+const { InputData, countCompare, equidistantPairs } = require('aoc-toolbox')
 const input = new InputData()
 
 const part1 = () => {
@@ -6,8 +6,7 @@ const part1 = () => {
 }
 
 const part2 = () => {
-    let slidingSums = slidingWindow(input.linesInts(), 3).map((w) => w.reduce((x, y) => x + y))
-    return countCompare(slidingSums, (x, y) => x < y)
+    return equidistantPairs(input.linesInts(), 3).filter((elem) => elem[0] < elem[1]).length
 }
 
 const part = process.env.part || "part1"
