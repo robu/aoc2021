@@ -3,10 +3,8 @@ const input = new InputData()
 
 const part1 = () => {
     const fields = input.linefieldsSeparator(' ')
-    let depth = 0
-    let horizontal = 0
-    fields.forEach((elem)=>{
-        let [cmd, magnitude] = elem
+    let depth = horizontal = 0
+    fields.forEach(([cmd, magnitude])=>{
         magnitude = parseInt(magnitude)
         if (cmd == 'forward') {
             horizontal += magnitude
@@ -21,11 +19,8 @@ const part1 = () => {
 
 const part2 = () => {
     const fields = input.linefieldsSeparator(' ')
-    let depth = 0
-    let horizontal = 0
-    let aim = 0
-    fields.forEach((elem)=>{
-        let [cmd, magnitude] = elem
+    let depth = horizontal = aim = 0
+    fields.forEach(([cmd, magnitude])=>{
         magnitude = parseInt(magnitude)
         if (cmd == 'forward') {
             horizontal += magnitude
