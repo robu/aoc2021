@@ -12,32 +12,23 @@ const part1 = () => {
 }
 
 const mostCommonBit = (data, col) => {
-    const count = data.countOccurrencesInColumn(col, '1')
-    return count >= data.linesCount()/2 ? '1' : '0'
+    return data.countOccurrencesInColumn(col, '1') >= data.linesCount()/2 ? '1' : '0'
 }
 
 const leastCommonBit = (data, col) => {
-    const count = data.countOccurrencesInColumn(col, '1')
-    return count < data.linesCount()/2 ? '1' : '0'
+    return data.countOccurrencesInColumn(col, '1') < data.linesCount()/2 ? '1' : '0'
+}
+
+const extractByCriteria = (data, predicate) => {
+    let filterData = new InputData({lines: data.lines()})
+    for (let col = 0; filterData.linesCount() > 1 && col < data.colsCount(); col++) {
+        filterData = filterData.filterOnColValue(col, predicate(filterData, col))
+    }
+    return parseInt(filterData.lines()[0], 2)
 }
 
 const part2 = () => {
-    let oxygenData = new InputData({lines: input.lines()})
-    let col = 0
-    while (oxygenData.linesCount() > 1 && col < input.colsCount()) {
-        oxygenData = oxygenData.filterOnColValue(col, mostCommonBit(oxygenData, col))
-        col++
-    }
-    const oxygen = parseInt(oxygenData.lines()[0], 2)
-
-    let co2Data = new InputData({lines: input.lines()})
-    col = 0
-    while (co2Data.linesCount() > 1 && col < input.colsCount()) {
-        co2Data = co2Data.filterOnColValue(col, leastCommonBit(co2Data, col))
-        col++
-    }
-    const co2 = parseInt(co2Data.lines()[0], 2)
-    return oxygen * co2
+    return extractByCriteria(input, mostCommonBit) * extractByCriteria(input, leastCommonBit)
 }
 
 const part = process.env.part || "part1"
