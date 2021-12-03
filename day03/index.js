@@ -19,9 +19,9 @@ const extractByCriteria = (data, bitValueCriteria) => {
     for (let col = 0; filterData.linesCount() > 1 && col < data.colsCount(); col++) {
         filterData = filterData.filterOnColValue(col, bitValueCriteria(filterData, col))
     }
-    return parseInt(filterData.firstLine(), 2)
+    return filterData.firstLine()
 }
 
-const part2 = () => extractByCriteria(input, mostCommonBit) * extractByCriteria(input, leastCommonBit)
+const part2 = () => parseInt(extractByCriteria(input, mostCommonBit), 2) * parseInt(extractByCriteria(input, leastCommonBit), 2)
 
 console.log((process.env.part || "part1") == "part1" ? part1() : part2())
