@@ -3,6 +3,6 @@
 
 
 aoc-toolbox@^1.3.0:
-  version "1.5.1"
-  resolved "https://registry.yarnpkg.com/aoc-toolbox/-/aoc-toolbox-1.5.1.tgz#a423a672ce245abefb943dc4854f2341dd11e973"
-  integrity sha512-LDhyUhmykOjiGvzrzb7RHXi8fPl4nera7GKOI6uAjI91s7um0+Sq7vU1MCsjWVchtATFm/IG3XdrBcc+tr+8hQ==
+  version "1.5.4"
+  resolved "https://registry.yarnpkg.com/aoc-toolbox/-/aoc-toolbox-1.5.4.tgz#324aac71fe38c3abe80b211d9db306e46d6409c0"
+  integrity sha512-+3drJb3B0TXi4/ovBqB0Q216/tB+ZjFxYV2MdhOiBONprLCiO8gEalucjxGae84hp3XnOKpx8yfdRg9owVXVRQ==
