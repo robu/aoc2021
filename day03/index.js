@@ -12,7 +12,6 @@ const part1 = () => {
 }
 
 const mostCommonBit = (data, col) => data.countOccurrencesInColumn(col, '1') >= data.linesCount() / 2 ? '1' : '0'
-
 const leastCommonBit = (data, col) => data.countOccurrencesInColumn(col, '1') < data.linesCount() / 2 ? '1' : '0'
 
 const extractByCriteria = (data, predicate) => {
@@ -23,8 +22,6 @@ const extractByCriteria = (data, predicate) => {
     return parseInt(filterData.lines()[0], 2)
 }
 
-const part2 = () => {
-    return extractByCriteria(input, mostCommonBit) * extractByCriteria(input, leastCommonBit)
-}
+const part2 = () => extractByCriteria(input, mostCommonBit) * extractByCriteria(input, leastCommonBit)
 
 console.log((process.env.part || "part1") == "part1" ? part1() : part2())
