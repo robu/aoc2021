@@ -11,13 +11,9 @@ const part1 = () => {
     return parseInt(gammaStr, 2) * parseInt(epsilonStr, 2)
 }
 
-const mostCommonBit = (data, col) => {
-    return data.countOccurrencesInColumn(col, '1') >= data.linesCount() / 2 ? '1' : '0'
-}
+const mostCommonBit = (data, col) => data.countOccurrencesInColumn(col, '1') >= data.linesCount() / 2 ? '1' : '0'
 
-const leastCommonBit = (data, col) => {
-    return data.countOccurrencesInColumn(col, '1') < data.linesCount() / 2 ? '1' : '0'
-}
+const leastCommonBit = (data, col) => data.countOccurrencesInColumn(col, '1') < data.linesCount() / 2 ? '1' : '0'
 
 const extractByCriteria = (data, predicate) => {
     let filterData = new InputData({ lines: data.lines() })
