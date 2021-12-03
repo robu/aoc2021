@@ -30,5 +30,4 @@ const part2 = () => {
     return horizontal * depth
 }
 
-const part = process.env.part || "part1"
-console.log(part == "part1" ? part1() : part2())
+console.log((process.env.part || "part1") == "part1" ? part1() : part2())
