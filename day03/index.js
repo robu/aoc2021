@@ -14,10 +14,10 @@ const part1 = () => {
 const mostCommonBit = (data, col) => data.countOccurrencesInColumn(col, '1') >= data.linesCount() / 2 ? '1' : '0'
 const leastCommonBit = (data, col) => data.countOccurrencesInColumn(col, '1') < data.linesCount() / 2 ? '1' : '0'
 
-const extractByCriteria = (data, predicate) => {
+const extractByCriteria = (data, bitValueCriteria) => {
     let filterData = new InputData({ lines: data.lines() })
     for (let col = 0; filterData.linesCount() > 1 && col < data.colsCount(); col++) {
-        filterData = filterData.filterOnColValue(col, predicate(filterData, col))
+        filterData = filterData.filterOnColValue(col, bitValueCriteria(filterData, col))
     }
     return parseInt(filterData.lines()[0], 2)
 }
