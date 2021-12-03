@@ -2,33 +2,29 @@ const { InputData, countCompare, equidistantPairs } = require('aoc-toolbox')
 const input = new InputData()
 
 const part1 = () => {
-    const fields = input.linefieldsSeparator(' ')
     let depth = horizontal = 0
-    fields.forEach(([cmd, magnitude])=>{
-        magnitude = parseInt(magnitude)
+    input.linefieldsSeparator(' ').forEach(([cmd, magnitude]) => {
         if (cmd == 'forward') {
-            horizontal += magnitude
+            horizontal += parseInt(magnitude)
         } else if (cmd == 'up') {
-            depth -= magnitude
+            depth -= parseInt(magnitude)
         } else if (cmd == 'down') {
-            depth += magnitude
+            depth += parseInt(magnitude)
         }
     })
     return horizontal * depth
 }
 
 const part2 = () => {
-    const fields = input.linefieldsSeparator(' ')
     let depth = horizontal = aim = 0
-    fields.forEach(([cmd, magnitude])=>{
-        magnitude = parseInt(magnitude)
+    input.linefieldsSeparator(' ').forEach(([cmd, magnitude]) => {
         if (cmd == 'forward') {
-            horizontal += magnitude
-            depth += magnitude * aim
+            horizontal += parseInt(magnitude)
+            depth += parseInt(magnitude) * aim
         } else if (cmd == 'up') {
-            aim -= magnitude
+            aim -= parseInt(magnitude)
         } else if (cmd == 'down') {
-            aim += magnitude
+            aim += parseInt(magnitude)
         }
     })
     return horizontal * depth
