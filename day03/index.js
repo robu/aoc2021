@@ -1,4 +1,4 @@
-const { InputData, cs } = require('aoc-toolbox')
+const { InputData } = require('aoc-toolbox')
 const input = new InputData()
 
 const part1 = () => {
@@ -12,15 +12,15 @@ const part1 = () => {
 }
 
 const mostCommonBit = (data, col) => {
-    return data.countOccurrencesInColumn(col, '1') >= data.linesCount()/2 ? '1' : '0'
+    return data.countOccurrencesInColumn(col, '1') >= data.linesCount() / 2 ? '1' : '0'
 }
 
 const leastCommonBit = (data, col) => {
-    return data.countOccurrencesInColumn(col, '1') < data.linesCount()/2 ? '1' : '0'
+    return data.countOccurrencesInColumn(col, '1') < data.linesCount() / 2 ? '1' : '0'
 }
 
 const extractByCriteria = (data, predicate) => {
-    let filterData = new InputData({lines: data.lines()})
+    let filterData = new InputData({ lines: data.lines() })
     for (let col = 0; filterData.linesCount() > 1 && col < data.colsCount(); col++) {
         filterData = filterData.filterOnColValue(col, predicate(filterData, col))
     }
