@@ -31,5 +31,4 @@ const part2 = () => {
     return extractByCriteria(input, mostCommonBit) * extractByCriteria(input, leastCommonBit)
 }
 
-const part = process.env.part || "part1"
-console.log(part == "part1" ? part1() : part2())
+console.log((process.env.part || "part1") == "part1" ? part1() : part2())
