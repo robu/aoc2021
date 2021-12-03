@@ -9,5 +9,4 @@ const part2 = () => {
     return equidistantPairs(input.linesInts(), 3).filter((elem) => elem[0] < elem[1]).length
 }
 
-const part = process.env.part || "part1"
-console.log(part == "part1" ? part1() : part2())
+console.log((process.env.part || "part1") == "part1" ? part1() : part2())
