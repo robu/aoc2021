@@ -1,27 +1,14 @@
 const { InputData, cs } = require('aoc-toolbox')
 const input = new InputData()
 
-const occurrencesPerColumn = (inputData, characterToCount) => {
-    const cols = input.colsCount()
-    let counters = []
-    for (let col = 0; col < cols; col++) {
-        counters.push(input.countOccurrencesInColumn(col, '1'))
-    }
-    return counters
-}
-
 const part1 = () => {
-    let counters = occurrencesPerColumn(input, '1')
-    let gammaStr = ''
-    let epsilonStr = ''
+    let gammaStr = epsilonStr = ''
     const rows = input.linesCount()
-    for (let i = 0; i < counters.length; i++) {
-        gammaStr = gammaStr + (counters[i] > rows / 2 ? '1' : '0')
+    for (let i = 0; i < input.colsCount(); i++) {
+        gammaStr = gammaStr + (input.countOccurrencesInColumn(i, '1') > rows / 2 ? '1' : '0')
         epsilonStr = epsilonStr + (gammaStr[i] == '1' ? '0' : '1')
     }
-    let gamma = parseInt(gammaStr, 2)
-    let epsilon = parseInt(epsilonStr, 2)
-    return gamma * epsilon
+    return parseInt(gammaStr, 2) * parseInt(epsilonStr, 2)
 }
 
 const mostCommonBit = (data, col) => {
