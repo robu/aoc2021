@@ -79,9 +79,6 @@ const findWinningBoardInSequence = (index, boards, numbers) => {
     return []
 }
 
-const findFirstWinningBingoBoard = (boards, numbers) => findWinningBoardInSequence(1, boards, numbers)
-const findLastWinningBingoBoard = (boards, numbers) => findWinningBoardInSequence(boards.length, boards, numbers)
-
 const boardsAndNumbers = () => {
     [numbers, ...boards] = input.sections()
     boards = boards.map((b) => b.linefieldsSeparator(' ')).map((b) => b.map((l) => l.filter((c) => c != ""))).map((b) => new BingoBoard(b))
@@ -90,14 +87,14 @@ const boardsAndNumbers = () => {
 
 const part1 = () => {
     let [boards, numbers] = boardsAndNumbers()
-    let [winningBoard, winningNumber] = findFirstWinningBingoBoard(boards, numbers)
+    let [winningBoard, winningNumber] = findWinningBoardInSequence(1, boards, numbers)
     let winningSum = winningBoard.unmaskedNumbers().reduce((x, y) => x + y)
     return winningSum * winningNumber
 }
 
 const part2 = () => {
     let [boards, numbers] = boardsAndNumbers()
-    let [winningBoard, winningNumber] = findLastWinningBingoBoard(boards, numbers)
+    let [winningBoard, winningNumber] = findWinningBoardInSequence(boards.length, boards, numbers)
     let winningSum = winningBoard.unmaskedNumbers().reduce((x, y) => x + y)
     return winningSum * winningNumber
 }
