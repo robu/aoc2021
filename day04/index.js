@@ -116,6 +116,29 @@ const findFirstWinningBingoBoard = (boards, numbers) => {
     return []
 }
 
+const findLastWinningBingoBoard = (boards, numbers) => {
+    const numBoards = boards.length
+    let winningBoardsCount = 0
+    for (let i = 0; i < numbers.length; i++) {
+        for (let j = 0; j < boards.length; j++) {
+            let board = boards[j]
+            if (!board.hasBingo()) { // don't check previous winners
+                let found = board.findAndMaskNumber(numbers[i])
+                if (found && board.hasBingo()) {
+                    let number = numbers[i]
+                    let boardNumber = j+1
+//                    cs({numBoards, winningBoardsCount, number, boardNumber})
+                    winningBoardsCount++
+                    if (winningBoardsCount == numBoards) {
+                        return [board, parseInt(numbers[i])]
+                    }
+                }
+            }
+        }
+    }
+    return []
+}
+
 const part1 = () => {
     [numbers, ...boards] = input.sections()
     numbers = numbers.firstLine().split(',')
@@ -126,7 +149,12 @@ const part1 = () => {
 }
 
 const part2 = () => {
-    return -1
+    [numbers, ...boards] = input.sections()
+    numbers = numbers.firstLine().split(',')
+    boards = boards.map((b) => b.linefieldsSeparator(' ')).map((b) => b.map((l) => l.filter((c) => c != ""))).map((b) => new BingoBoard(b))
+    let [winningBoard, winningNumber] = findLastWinningBingoBoard(boards, numbers)
+    let winningSum = winningBoard.unmaskedNumbers().reduce((x, y) => x + y)
+    return winningSum * winningNumber
 }
 
 console.log((process.env.part || "part1") == "part1" ? part1() : part2())
