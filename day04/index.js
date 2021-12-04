@@ -103,21 +103,7 @@ class BingoBoard {
 
 }
 
-const findFirstWinningBingoBoard = (boards, numbers) => {
-    for (let i = 0; i < numbers.length; i++) {
-        for (let j = 0; j < boards.length; j++) {
-            let board = boards[j]
-            let found = board.findAndMaskNumber(numbers[i])
-            if (found && board.hasBingo()) {
-                return [board, parseInt(numbers[i])]
-            }
-        }
-    }
-    return []
-}
-
-const findLastWinningBingoBoard = (boards, numbers) => {
-    const numBoards = boards.length
+const findWinningBoardInSequence = (index, boards, numbers) => {
     let winningBoardsCount = 0
     for (let i = 0; i < numbers.length; i++) {
         for (let j = 0; j < boards.length; j++) {
@@ -126,7 +112,7 @@ const findLastWinningBingoBoard = (boards, numbers) => {
                 let found = board.findAndMaskNumber(numbers[i])
                 if (found && board.hasBingo()) {
                     winningBoardsCount++
-                    if (winningBoardsCount == numBoards) {
+                    if (winningBoardsCount == index) {
                         return [board, parseInt(numbers[i])]
                     }
                 }
@@ -134,6 +120,14 @@ const findLastWinningBingoBoard = (boards, numbers) => {
         }
     }
     return []
+}
+
+const findFirstWinningBingoBoard = (boards, numbers) => {
+    return findWinningBoardInSequence(1, boards, numbers)
+}
+
+const findLastWinningBingoBoard = (boards, numbers) => {
+    return findWinningBoardInSequence(boards.length, boards, numbers)
 }
 
 const boardsAndNumbers = () => {
