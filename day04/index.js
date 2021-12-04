@@ -50,11 +50,11 @@ class BingoBoard {
         this._content.forEach((row, r) => {
             row.forEach((n, c) => {
                 if (!this._masks.isMasked(r, c)) {
-                    numbers.push(n)
+                    numbers.push(parseInt(n))
                 }
             })
         })
-        return numbers.map((n) => parseInt(n))
+        return numbers
     }
 
     hasBingo = () => this._bingo
