@@ -115,13 +115,8 @@ const findWinningBoardInSequence = (index, boards, numbers) => {
     return []
 }
 
-const findFirstWinningBingoBoard = (boards, numbers) => {
-    return findWinningBoardInSequence(1, boards, numbers)
-}
-
-const findLastWinningBingoBoard = (boards, numbers) => {
-    return findWinningBoardInSequence(boards.length, boards, numbers)
-}
+const findFirstWinningBingoBoard = (boards, numbers) => findWinningBoardInSequence(1, boards, numbers)
+const findLastWinningBingoBoard = (boards, numbers) => findWinningBoardInSequence(boards.length, boards, numbers)
 
 const boardsAndNumbers = () => {
     [numbers, ...boards] = input.sections()
