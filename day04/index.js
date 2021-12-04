@@ -22,18 +22,16 @@ class MaskMatrix {
         return this._content[row][col] === this._maskChar
     }
 
+    _isAllMask(rowArr) {
+        return rowArr.filter((x) => x === this._maskChar).length === rowArr.length
+    }
+
     isFullRow(rowNum) {
-        let line = this._content[rowNum]
-        return line.filter((x) => x === this._maskChar).length === line.length
+        return this._isAllMask(this._content[rowNum])
     }
 
     hasFullRow() {
-        for (let r = 0; r < this._rows; r++) {
-            if (this.isFullRow(r)) {
-                return true
-            }
-        }
-        return false
+        return !!this._content.find((r) => this._isAllMask(r))
     }
 
     column(colNum) {
@@ -41,7 +39,7 @@ class MaskMatrix {
     }
 
     isFullColumn(colNum) {
-        return this.column(colNum).filter((x) => x === this._maskChar).length === this._rows
+        return this._isAllMask(this.column(colNum))
     }
 
     hasFullColumn() {
