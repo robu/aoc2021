@@ -28,12 +28,8 @@ class MaskMatrix {
         return this._isAllMask(this._content[rowNum])
     }
 
-    column(colNum) {
-        return this._content.map((r) => r[colNum])
-    }
-
     isFullColumn(colNum) {
-        return this._isAllMask(this.column(colNum))
+        return this._isAllMask(this._content.map((r) => r[colNum]))
     }
 }
 
