@@ -48,10 +48,6 @@ class MaskMatrix {
         }
         return false
     }
-
-    hasFullRowOrColumn() {
-        return this.hasFullRow() || this.hasFullColumn()
-    }
 }
 
 class BingoBoard {
