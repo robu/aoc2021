@@ -28,25 +28,12 @@ class MaskMatrix {
         return this._isAllMask(this._content[rowNum])
     }
 
-    hasFullRow() {
-        return !!this._content.find((r) => this._isAllMask(r))
-    }
-
     column(colNum) {
         return this._content.map((r) => r[colNum])
     }
 
     isFullColumn(colNum) {
         return this._isAllMask(this.column(colNum))
-    }
-
-    hasFullColumn() {
-        for (let c = 0; c < this._cols; c++) {
-            if (this.isFullColumn(c)) {
-                return true
-            }
-        }
-        return false
     }
 }
 
