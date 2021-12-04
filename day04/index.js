@@ -125,8 +125,8 @@ const findLastWinningBingoBoard = (boards, numbers) => {
             if (!board.hasBingo()) { // don't check previous winners
                 let found = board.findAndMaskNumber(numbers[i])
                 if (found && board.hasBingo()) {
-                    let number = numbers[i]
-                    let boardNumber = j+1
+//                    let number = numbers[i]
+//                    let boardNumber = j+1
 //                    cs({numBoards, winningBoardsCount, number, boardNumber})
                     winningBoardsCount++
                     if (winningBoardsCount == numBoards) {
