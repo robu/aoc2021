@@ -37,16 +37,11 @@ class MaskMatrix {
     }
 
     column(colNum) {
-        let col = []
-        for (let r = 0; r < this._rows; r++) {
-            col.push(this._content[r][colNum])
-        }
-        return col
+        return this._content.map((r) => r[colNum])
     }
 
     isFullColumn(colNum) {
-        let col = this.column(colNum)
-        return col.filter((x) => x === this._maskChar).length === col.length
+        return this.column(colNum).filter((x) => x === this._maskChar).length === this._rows
     }
 
     hasFullColumn() {
