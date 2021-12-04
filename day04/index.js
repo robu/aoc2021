@@ -5,12 +5,10 @@ class MaskMatrix {
     constructor(rows = 5, cols = 5, emptyChar = '_', maskChar = 'X') {
         this._rows = rows; this._cols = cols, this._emptyChar = emptyChar; this._maskChar = maskChar
         this._content = []
+        let row = new Array(this._cols)
+        row.fill(this._emptyChar)
         for (let i = 0; i < this._rows; i++) {
-            let row = []
-            for (let j = 0; j < this._cols; j++) {
-                row.push(this._emptyChar)
-            }
-            this._content.push(row)
+            this._content.push(Array.from(row))
         }
     }
 
