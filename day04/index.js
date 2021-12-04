@@ -125,9 +125,6 @@ const findLastWinningBingoBoard = (boards, numbers) => {
             if (!board.hasBingo()) { // don't check previous winners
                 let found = board.findAndMaskNumber(numbers[i])
                 if (found && board.hasBingo()) {
-//                    let number = numbers[i]
-//                    let boardNumber = j+1
-//                    cs({numBoards, winningBoardsCount, number, boardNumber})
                     winningBoardsCount++
                     if (winningBoardsCount == numBoards) {
                         return [board, parseInt(numbers[i])]
@@ -139,19 +136,21 @@ const findLastWinningBingoBoard = (boards, numbers) => {
     return []
 }
 
-const part1 = () => {
+const boardsAndNumbers = () => {
     [numbers, ...boards] = input.sections()
-    numbers = numbers.firstLine().split(',')
     boards = boards.map((b) => b.linefieldsSeparator(' ')).map((b) => b.map((l) => l.filter((c) => c != ""))).map((b) => new BingoBoard(b))
+    return [boards, numbers.firstLine().split(',')]
+}
+
+const part1 = () => {
+    let [boards, numbers] = boardsAndNumbers()
     let [winningBoard, winningNumber] = findFirstWinningBingoBoard(boards, numbers)
     let winningSum = winningBoard.unmaskedNumbers().reduce((x, y) => x + y)
     return winningSum * winningNumber
 }
 
 const part2 = () => {
-    [numbers, ...boards] = input.sections()
-    numbers = numbers.firstLine().split(',')
-    boards = boards.map((b) => b.linefieldsSeparator(' ')).map((b) => b.map((l) => l.filter((c) => c != ""))).map((b) => new BingoBoard(b))
+    let [boards, numbers] = boardsAndNumbers()
     let [winningBoard, winningNumber] = findLastWinningBingoBoard(boards, numbers)
     let winningSum = winningBoard.unmaskedNumbers().reduce((x, y) => x + y)
     return winningSum * winningNumber
