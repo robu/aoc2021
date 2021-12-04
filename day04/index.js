@@ -12,25 +12,15 @@ class MaskMatrix {
         }
     }
 
-    mask(row, col) {
-        this._content[row][col] = this._maskChar
-    }
+    mask = (row, col) => this._content[row][col] = this._maskChar
 
-    isMasked(row, col) {
-        return this._content[row][col] === this._maskChar
-    }
+    isMasked = (row, col) => this._content[row][col] === this._maskChar
 
-    _isAllMask(rowArr) {
-        return rowArr.filter((x) => x === this._maskChar).length === rowArr.length
-    }
+    _isAllMask = (rowArr) => rowArr.filter((x) => x === this._maskChar).length === rowArr.length
 
-    isFullRow(rowNum) {
-        return this._isAllMask(this._content[rowNum])
-    }
+    isFullRow = (rowNum) => this._isAllMask(this._content[rowNum])
 
-    isFullColumn(colNum) {
-        return this._isAllMask(this._content.map((r) => r[colNum]))
-    }
+    isFullColumn = (colNum) => this._isAllMask(this._content.map((r) => r[colNum]))
 }
 
 class BingoBoard {
@@ -67,10 +57,7 @@ class BingoBoard {
         return numbers.map((n) => parseInt(n))
     }
 
-    hasBingo() {
-        return this._bingo
-    }
-
+    hasBingo = () => this._bingo
 }
 
 const findWinningBoardInSequence = (index, boards, numbers) => {
