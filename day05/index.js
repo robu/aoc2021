@@ -19,7 +19,7 @@ class PointCounter {
     addPointsBetween = (from, to) => {
         for (let yDelta = 0, xDelta = 0; Math.abs(yDelta) <= Math.abs(to.y - from.y) && Math.abs(xDelta) <= Math.abs(to.x - from.x); yDelta += Math.sign(to.y - from.y), xDelta += Math.sign(to.x - from.x)) {
             this.add({ x: from.x + xDelta, y: from.y + yDelta })
-        }    
+        }
     }
     count = (pred) => Object.entries(this._points).filter(pred).length
 }
@@ -31,7 +31,7 @@ const countDangerousPoints = (data) => {
 }
 
 // only work with straight lines, ie horizontal or vertical, not diagonal
-const part1 = () => countDangerousPoints(input.filter(({from, to}) => from.x === to.x || from.y === to.y))
+const part1 = () => countDangerousPoints(input.filter(({ from, to }) => from.x === to.x || from.y === to.y))
 
 const part2 = () => countDangerousPoints(input)
 
