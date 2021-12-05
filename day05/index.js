@@ -21,9 +21,8 @@ class PointCounter {
     constructor() {
         this._points = {}
     }
-    j = (obj) => JSON.stringify(obj)
     add = (point) => {
-        let p = this.j(point)
+        let p = JSON.stringify(point)
         if (p in this._points) {
             this._points[p] = this._points[p] + 1
         } else {
