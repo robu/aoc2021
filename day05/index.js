@@ -30,13 +30,9 @@ const countDangerousPoints = (data) => {
     return pointCounter.count(([, total]) => total > 1)
 }
 
-const part1 = () => {
-    // only work with straight lines, ie horizontal or vertical, not diagonal
-    return countDangerousPoints(input.filter(({from, to}) => from.x === to.x || from.y === to.y))
-}
+// only work with straight lines, ie horizontal or vertical, not diagonal
+const part1 = () => countDangerousPoints(input.filter(({from, to}) => from.x === to.x || from.y === to.y))
 
-const part2 = () => {
-    return countDangerousPoints(input)
-}
+const part2 = () => countDangerousPoints(input)
 
 console.log((process.env.part || "part1") == "part1" ? part1() : part2())
