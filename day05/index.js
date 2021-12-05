@@ -28,9 +28,9 @@ class PointCounter {
 }
 
 const countDangerousPoints = (data) => {
-    let counter = new PointCounter()
-    data.forEach(({ from, to }) => pointsBetween(from, to).forEach((p) => counter.add(p)))
-    return counter.count(([, count]) => count > 1)
+    let pointCounter = new PointCounter()
+    data.forEach(({ from, to }) => pointsBetween(from, to).forEach((p) => pointCounter.add(p)))
+    return pointCounter.count(([, total]) => total > 1)
 }
 
 const part1 = () => {
