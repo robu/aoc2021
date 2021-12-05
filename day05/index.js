@@ -9,7 +9,7 @@ class PointCounter {
         this._points = {}
     }
     add = (point) => {
-        let p = JSON.stringify(point)
+        const p = JSON.stringify(point)
         if (p in this._points) {
             this._points[p] = this._points[p] + 1
         } else {
@@ -25,7 +25,7 @@ class PointCounter {
 }
 
 const countDangerousPoints = (data) => {
-    let pointCounter = new PointCounter()
+    const pointCounter = new PointCounter()
     data.forEach(({ from, to }) => pointCounter.addPointsBetween(from, to))
     return pointCounter.count(([, total]) => total > 1)
 }
