@@ -1,4 +1,4 @@
-const { InputData, cs } = require('aoc-toolbox')
+const { InputData } = require('aoc-toolbox')
 
 const input = new InputData().linefieldsSeparator(' -> ').map(([c1, c2]) => {
     let [x1, y1] = c1.split(','); let [x2, y2] = c2.split(',')
