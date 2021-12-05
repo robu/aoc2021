@@ -43,11 +43,9 @@ const part1 = () => {
 }
 
 const part2 = () => {
-    let inputWithSteps = input.map((s) => { return { from: s.from, to: s.to, steps: pointsBetween(s.from, s.to) } })
     let counter = new PointCounter()
-    inputWithSteps.forEach((line) => line.steps.forEach((point) => counter.add(point)))
-    let coords = counter.filter(([, count]) => count > 1)
-    return coords.length
+    input.forEach(({ from, to }) => pointsBetween(from, to).forEach((p) => counter.add(p)))
+    return counter.filter(([, count]) => count > 1).length
 }
 
 console.log((process.env.part || "part1") == "part1" ? part1() : part2())
