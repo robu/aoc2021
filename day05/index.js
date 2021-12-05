@@ -1,7 +1,7 @@
 const { InputData, cs } = require('aoc-toolbox')
 const input = new InputData().linefieldsSeparator(' -> ').map(([c1, c2]) => {
     c1 = c1.split(','); c2 = c2.split(',')
-    return { from: { x: parseInt(c1[0]), y: parseInt(c1[1]) }, to: { x: parseInt(c2[0]), y: parseInt(c2[1]) } }
+    return { from: { x: +c1[0], y: +c1[1] }, to: { x: +c2[0], y: +c2[1] } }
 })
 
 class PointCounter {
