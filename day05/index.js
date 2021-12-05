@@ -35,7 +35,7 @@ const countDangerousPoints = (data) => {
 
 const part1 = () => {
     // only work with straight lines, ie horizontal or vertical, not diagonal
-    return countDangerousPoints(input.filter((cs) => cs.from.x === cs.to.x || cs.from.y === cs.to.y))
+    return countDangerousPoints(input.filter(({from, to}) => from.x === to.x || from.y === to.y))
 }
 
 const part2 = () => {
