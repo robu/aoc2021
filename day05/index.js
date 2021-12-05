@@ -1,4 +1,6 @@
 const { InputData, cs } = require('aoc-toolbox')
+let startTime = new Date().getTime()
+
 const input = new InputData().linefieldsSeparator(' -> ').map(([c1, c2]) => {
     c1 = c1.split(','); c2 = c2.split(',')
     return { from: { x: +c1[0], y: +c1[1] }, to: { x: +c2[0], y: +c2[1] } }
@@ -9,7 +11,7 @@ class PointCounter {
         this._points = {}
     }
     add = (point) => {
-        const p = JSON.stringify(point)
+        const p = `${point.x},${point.y}`//JSON.stringify(point)
         if (p in this._points) {
             this._points[p] = this._points[p] + 1
         } else {
@@ -36,3 +38,5 @@ const part1 = () => countDangerousPoints(input.filter(({ from, to }) => from.x =
 const part2 = () => countDangerousPoints(input)
 
 console.log((process.env.part || "part1") == "part1" ? part1() : part2())
+let endTime = new Date().getTime()
+console.log(`${endTime - startTime} ms`)
