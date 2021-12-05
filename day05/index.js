@@ -24,7 +24,7 @@ class PointCounter {
             this._points[p] = 1
         }
     }
-    filter = (pred) => Object.entries(this._points).filter(pred)
+    count = (pred) => Object.entries(this._points).filter(pred).length
 }
 
 const part1 = () => {
@@ -32,13 +32,13 @@ const part1 = () => {
     // only work with straight lines, ie horizontal or vertical, not diagonal
     let straightInput = input.filter((cs) => cs.from.x === cs.to.x || cs.from.y === cs.to.y)
     straightInput.forEach(({ from, to }) => pointsBetween(from, to).forEach((p) => counter.add(p)))
-    return counter.filter(([, count]) => count > 1).length
+    return counter.count(([, count]) => count > 1)
 }
 
 const part2 = () => {
     let counter = new PointCounter()
     input.forEach(({ from, to }) => pointsBetween(from, to).forEach((p) => counter.add(p)))
-    return counter.filter(([, count]) => count > 1).length
+    return counter.count(([, count]) => count > 1)
 }
 
 console.log((process.env.part || "part1") == "part1" ? part1() : part2())
