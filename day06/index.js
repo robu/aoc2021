@@ -9,36 +9,20 @@ class FishGenerations {
         fishList.forEach((f) => this.addFish(1, f))
     }
 
-    addFish(count, generation = -1) {
-        if (generation === -1) {
-            generation = this._range - 1
-        }
-        this._generationCounters[generation] += count
-    }
+    addFish = (count, generation) => this._generationCounters[generation] += count
 
     increaseDays(iterations = 1) {
         for (let i = 0; i < iterations; i++) {
-            // console.log(`${this._generationCounters.toString()} (${this.count()})`)
             let mothers = this._generationCounters.shift()
             this._generationCounters.push(0)
-            this.addFish(mothers) // children added to the end of the queue
+            this.addFish(mothers, this._range - 1) // children added to the end of the queue
             this.addFish(mothers, this._resetTo) // previous mothers added to the reset generation
         }
+        return this._generationCounters.reduce((x, y) => x + y)
     }
-
-    count = () => this._generationCounters.reduce((x, y) => x + y)
 }
 
-const part1 = () => {
-    let counter = new FishGenerations(input)
-    counter.increaseDays(80)
-    return counter.count()
-}
-
-const part2 = () => {
-    let counter = new FishGenerations(input)
-    counter.increaseDays(256)
-    return counter.count()
-}
+const part1 = () => new FishGenerations(input).increaseDays(80)
+const part2 = () => new FishGenerations(input).increaseDays(256)
 
 console.log((process.env.part || "part1") == "part1" ? part1() : part2())
