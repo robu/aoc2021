@@ -1,5 +1,5 @@
 let genCounters = new Array(9).fill(0)
-require('fs').readFileSync('input.txt', { encoding: 'utf8' }).trim().split("\n")[0].split(',').map((x) => +x).forEach((f) => genCounters[f] += 1)
+require('fs').readFileSync('input.txt', { encoding: 'utf8' }).split(',').map((x) => +x).forEach((f) => genCounters[f] += 1)
 
 const increaseDays = (days) => {
     for (let i = 0; i < days; i++) {
