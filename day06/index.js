@@ -1,8 +1,8 @@
 const fs = require('fs')
-const input = fs.readFileSync('input.txt', {encoding: 'utf8'}).trim().split("\n")[0].split(',').map((x) => +x)
+const input = fs.readFileSync('input.txt', { encoding: 'utf8' }).trim().split("\n")[0].split(',').map((x) => +x)
 
 class FishGenerations {
-    constructor(fishList=[], range = 9, resetTo = 6) {
+    constructor(fishList = [], range = 9, resetTo = 6) {
         this._range = range
         this._resetTo = resetTo
         this._generationCounters = new Array(this._range).fill(0)
