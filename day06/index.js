@@ -38,7 +38,10 @@ const part1 = () => {
 }
 
 const part2 = () => {
-    return -1
+    let counter = new FishGenerations()
+    counter.addFishes(input)
+    counter.increaseDays(256)
+    return counter.count()
 }
 
 console.log((process.env.part || "part1") == "part1" ? part1() : part2())
