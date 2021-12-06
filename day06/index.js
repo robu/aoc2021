@@ -2,15 +2,14 @@ const fs = require('fs')
 const input = fs.readFileSync('input.txt', {encoding: 'utf8'}).trim().split("\n")[0].split(',').map((x) => +x)
 
 class FishGenerations {
-    constructor(range = 9, resetTo = 6) {
+    constructor(fishList=[], range = 9, resetTo = 6) {
         this._range = range
         this._resetTo = resetTo
         this._generationCounters = new Array(this._range).fill(0)
+        fishList.forEach((f) => this.addFish(1, f))
     }
 
-    addFishes = (fishList) => fishList.forEach((f) => this.addFish(1, f))
-
-    addFish(count = 1, generation = -1) {
+    addFish(count, generation = -1) {
         if (generation === -1) {
             generation = this._range - 1
         }
@@ -31,15 +30,13 @@ class FishGenerations {
 }
 
 const part1 = () => {
-    let counter = new FishGenerations()
-    counter.addFishes(input)
+    let counter = new FishGenerations(input)
     counter.increaseDays(80)
     return counter.count()
 }
 
 const part2 = () => {
-    let counter = new FishGenerations()
-    counter.addFishes(input)
+    let counter = new FishGenerations(input)
     counter.increaseDays(256)
     return counter.count()
 }
