@@ -10,7 +10,7 @@ const part1 = () => {
     return input.reduce((x, y) => x + Math.abs(y - median), 0)
 }
 
-const distanceCost = (d) => d * (d + 1) / 2
+const distanceCost = d => d * (d + 1) / 2
 
 const part2 = () => {
     const average = Math.round(input.reduce((x, y) => x + y) / input.length - 0.5) // rounded down
