@@ -8,7 +8,7 @@ const medianOfArray = arr => {
 
 const part1 = () => {
     const median = medianOfArray(input)
-    return input.map((x) => Math.abs(x - median)).reduce((x, y) => x + y)
+    return input.reduce((x, y) => x + Math.abs(y - median), 0)
 }
 
 const distanceCost = (d) => d * (d + 1) / 2
