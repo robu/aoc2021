@@ -8,19 +8,14 @@ const medianOfArray = arr => {
 
 const part1 = () => {
     const median = medianOfArray(input)
-    const distances = input.map((x) => Math.abs(x - median))
-    const distanceSum = distances.reduce((x, y) => x + y)
-    return distanceSum
+    return input.map((x) => Math.abs(x - median)).reduce((x, y) => x + y)
 }
 
 const distanceCost = (d) => d * (d + 1) / 2
 
 const part2 = () => {
-    const average = Math.round(input.reduce((x, y) => x + y) / input.length - 0.5)
-    const distances = input.map((x) => Math.abs(x - average))
-    const distanceCosts = distances.map((x) => distanceCost(x))
-    const distanceSum = distanceCosts.reduce((x, y) => x + y)
-    return distanceSum
+    const average = Math.round(input.reduce((x, y) => x + y) / input.length - 0.5) // rounded down
+    return input.map((x) => distanceCost(Math.abs(x - average))).reduce((x, y) => x + y)
 }
 
 console.log((process.env.part || "part1") == "part1" ? part1() : part2())
