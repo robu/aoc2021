@@ -15,7 +15,7 @@ const distanceCost = (d) => d * (d + 1) / 2
 
 const part2 = () => {
     const average = Math.round(input.reduce((x, y) => x + y) / input.length - 0.5) // rounded down
-    return input.map((x) => distanceCost(Math.abs(x - average))).reduce((x, y) => x + y)
+    return input.reduce((x, y) => x + distanceCost(Math.abs(y - average)), 0)
 }
 
 console.log((process.env.part || "part1") == "part1" ? part1() : part2())
