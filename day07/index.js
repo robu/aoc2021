@@ -13,8 +13,14 @@ const part1 = () => {
     return distanceSum
 }
 
+const distanceCost = (d) => d * (d + 1) / 2
+
 const part2 = () => {
-    return -1
+    const average = Math.round(input.reduce((x, y) => x + y) / input.length) - 1
+    const distances = input.map((x) => Math.abs(x - average))
+    const distanceCosts = distances.map((x) => distanceCost(x))
+    const distanceSum = distanceCosts.reduce((x, y) => x + y)
+    return distanceSum
 }
 
 console.log((process.env.part || "part1") == "part1" ? part1() : part2())
