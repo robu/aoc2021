@@ -16,7 +16,7 @@ const part1 = () => {
 const distanceCost = (d) => d * (d + 1) / 2
 
 const part2 = () => {
-    const average = Math.round(input.reduce((x, y) => x + y) / input.length) - 1
+    const average = Math.round(input.reduce((x, y) => x + y) / input.length - 0.5)
     const distances = input.map((x) => Math.abs(x - average))
     const distanceCosts = distances.map((x) => distanceCost(x))
     const distanceSum = distanceCosts.reduce((x, y) => x + y)
