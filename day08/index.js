@@ -1,8 +1,12 @@
-const inputData = require('fs').readFileSync('input-test.txt', { encoding: 'utf8' }).trim().split('\n').map((line) => line.split(' | ').map((io) => io.split(' ')))
+const inputData = require('fs').readFileSync('input.txt', { encoding: 'utf8' }).trim().split('\n').map((line) => line.split(' | ').map((io) => io.split(' ')))
 
 const part1 = () => {
-    console.log('First line:')
-    console.log(`${inputData[0][0].toString()}`)
+    const outputValues = inputData.map(line => line[1])
+    const countEasyDigits = outputValues.flat().reduce((c, str) => {
+        if ([2,4,3,7].includes(str.length)) { c++ }
+        return c
+    }, 0)
+    return countEasyDigits
 }
 
 const part2 = () => {
